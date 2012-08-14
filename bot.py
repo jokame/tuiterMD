@@ -25,7 +25,7 @@ while True:
                       show_user=True, include_entities=False)
 
     if not len(busq) > 0:
-        print "No hay menciones"
+        print "No hay preguntas."
         
     for b in busq:
         mens=b.text.replace(u"¿Qué hora es?","")
@@ -35,8 +35,7 @@ while True:
                 hora = time.asctime()[11:20]
                 tuit = 'Oye, @%s, aquí, en el D.F., la hora es: %s' %(b.from_user, hora)
                 print tuit
-#                api.update_status(tuit)
+                api.update_status(tuit)
                 ids.append(b.id)
                 
-    print api.rate_limit_status()['remaining_hits'], "***************\n\n"
     time.sleep(30)
